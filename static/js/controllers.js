@@ -1,6 +1,6 @@
 var phonecatApp = angular.module('rayApp', []);
 
-phonecatApp.controller('PhoneListCtrl', function ($scope) {
+rayApp.controller('PhoneListCtrl', function ($scope) {
   $scope.phones = [
     {'name': 'Nexus S',
      'snippet': 'Fast just got faster with Nexus S.'},
