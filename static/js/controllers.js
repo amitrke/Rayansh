@@ -1,4 +1,4 @@
-var phonecatApp = angular.module('rayApp', []);
+var rayApp = angular.module('rayApp', []);
 
 rayApp.controller('PhoneListCtrl', function ($scope) {
   $scope.phones = [
