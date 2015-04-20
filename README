@@ -65,3 +65,10 @@ Additional information
 ======================
 Link to additional information will be here, when we have it :)
 
+MongoDB 2.4 database added.  Please make note of these credentials:
+
+   Root User:     admin
+   Root Password: tVrdZ3z413H9
+   Database Name: ray
+
+Connection URL: mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/
