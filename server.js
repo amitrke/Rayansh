@@ -1,7 +1,7 @@
 var cc          = require('config-multipaas'),
     restify     = require('restify'),
     fs          = require('fs'),
-    ds			 = require('js/restify/dataservice')
+    ds			 = require('static/js/restify/dataservice')
 
 var config      = cc(),
     app         = restify.createServer()
