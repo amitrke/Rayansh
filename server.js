@@ -23,6 +23,13 @@ app.get('/', function (req, res, next)
   res.end(data.toString().replace(/host:port/g, req.header('Host')));
 });
 
+app.get('/data', function (req, res, next)
+{
+  res.status(200);
+  res.header('Content-Type', 'text/html');
+  res.end("Hello World");
+});
+
 app.get(/\/(css|js|img)\/?.*/, restify.serveStatic({directory: './static/'}));
 
 app.listen(config.get('PORT'), config.get('IP'), function () {
