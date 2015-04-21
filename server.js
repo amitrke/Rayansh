@@ -1,7 +1,6 @@
 var cc          = require('config-multipaas'),
     restify     = require('restify'),
-    fs          = require('fs'),
-    ds			 = require('static/js/restify/dataservice')
+    fs          = require('fs')
 
 var config      = cc(),
     app         = restify.createServer()
@@ -9,6 +8,14 @@ var config      = cc(),
 app.use(restify.queryParser())
 app.use(restify.CORS())
 app.use(restify.fullResponse())
+
+var controllers = {}
+    , controllers_path = process.cwd() + '/app/controllers'
+	fs.readdirSync(controllers_path).forEach(function (file) {
+    if (file.indexOf('.js') != -1) {
+        controllers[file.split('.')[0]] = require(controllers_path + '/' + file)
+    }
+})
 
 // Routes
 app.get('/status', function (req, res, next)
@@ -24,12 +31,7 @@ app.get('/', function (req, res, next)
   res.end(data.toString().replace(/host:port/g, req.header('Host')));
 });
 
-app.get('/data', function (req, res, next)
-{
-  res.status(200);
-  res.header('Content-Type', 'text/html');
-  res.end(ds.getHello());
-});
+app.get('/data', controllers.content.getHello);
 
 app.get(/\/(css|js|img)\/?.*/, restify.serveStatic({directory: './static/'}));
 
