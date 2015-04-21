@@ -1,6 +1,7 @@
 var cc          = require('config-multipaas'),
     restify     = require('restify'),
-    fs          = require('fs')
+    fs          = require('fs'),
+    ds			 = require('js/restify/dataservice')
 
 var config      = cc(),
     app         = restify.createServer()
@@ -27,7 +28,7 @@ app.get('/data', function (req, res, next)
 {
   res.status(200);
   res.header('Content-Type', 'text/html');
-  res.end("Hello World");
+  res.end(ds.getHello());
 });
 
 app.get(/\/(css|js|img)\/?.*/, restify.serveStatic({directory: './static/'}));
