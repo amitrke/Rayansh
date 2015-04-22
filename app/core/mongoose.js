@@ -7,7 +7,7 @@ mongoose.connect(mongoUrl, {server:{auto_reconnect:true}});
 var db = mongoose.connection;
 
 db.on('error', function (err) {
-    console.error('MongoDB connection error:', err);
+    console.error('MongoDB connection error URL '+mongoUrl+':', err);
 });
 db.once('open', function callback() {
     console.info('MongoDB connection is established');
