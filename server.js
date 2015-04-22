@@ -37,6 +37,13 @@ app.get('/data', controllers.content.getHello);
 
 app.get(/\/(css|js|img)\/?.*/, restify.serveStatic({directory: './static/'}));
 
+// Article Start
+app.post("/articles", controllers.article.createArticle)
+app.put("/articles/:id", controllers.article.updateArticle)
+app.del("/articles/:id", controllers.article.deleteArticle)
+app.get({path: "/articles/:id", version: "1.0.0"}, controllers.article.viewArticle)
+app.get({path: "/articles/:id", version: "2.0.0"}, controllers.article.viewArticle_v2)
+
 app.listen(config.get('PORT'), config.get('IP'), function () {
   console.log( "Listening on " + config.get('IP') + ", port " + config.get('PORT') )
 });
