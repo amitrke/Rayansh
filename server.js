@@ -5,6 +5,8 @@ var cc          = require('config-multipaas'),
 var config      = cc(),
     app         = restify.createServer()
 
+require('./app/core/mongoose')
+
 app.use(restify.queryParser())
 app.use(restify.CORS())
 app.use(restify.fullResponse())
