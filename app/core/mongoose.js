@@ -2,7 +2,8 @@ var mongoose = require('mongoose')
     , fs = require('fs')
     , models_path = process.cwd() + '/app/models'
 
-var mongoUrl = 'mongodb://'+process.env.OPENSHIFT_NOSQL_DB_USERNAME+':'+process.env.OPENSHIFT_NOSQL_DB_PASSWORD+'@'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/ray';
+var mongoUrl = 'mongodb://'+process.env.OPENSHIFT_MONGODB_DB_USERNAME+':'+process.env.OPENSHIFT_MONGODB_DB_PASSWORD+'@'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/ray';
+
 mongoose.connect(mongoUrl, {server:{auto_reconnect:true}});
 var db = mongoose.connection;
 
