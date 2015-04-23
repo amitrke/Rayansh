@@ -10,6 +10,7 @@ require('./app/core/mongoose')
 app.use(restify.queryParser())
 app.use(restify.CORS())
 app.use(restify.fullResponse())
+app.use(restify.bodyParser())
 
 var controllers = {}
     , controllers_path = process.cwd() + '/app/controllers'
